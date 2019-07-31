@@ -185,10 +185,16 @@ function dtp_init() {
 
 	if( datepickeropts.max_date !== '' ){
 		opts.maxDate = datepickeropts.max_date;
+
+		// set max year
+		opts.yearEnd = parseInt( datepickeropts.max_year );
 	}
 
 	if( datepickeropts.min_date !== '' ){
 		opts.minDate = datepickeropts.min_date;
+
+		// set min year
+		opts.yearStart = parseInt( datepickeropts.min_year );
 	}
 
 	if( datepickeropts.disabled_days !== ''){

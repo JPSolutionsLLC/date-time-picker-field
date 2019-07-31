@@ -23,6 +23,9 @@
  * @package date-time-picker-field
  *
  * Version Log
+ * * v.1.7.9.2 - 31.07.2019
+ * - dirname() error fix (min.req PHP7)
+ *
  * * v.1.7.9.1 - 03.07.2019
  * - time scroll fix
  * - load custom version of jquery.datetimepicker plugin

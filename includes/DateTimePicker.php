@@ -139,19 +139,21 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 
 				// max date.
 				if ( isset( $opts['max_date'] ) && $opts['max_date'] !== '' ) {
-					$opts['max_date'] = strtotime( $opts['max_date'] );
+					$temp_date = strtotime( $opts['max_date'] );
 
-					if ( $opts['max_date'] ) {
-						$opts['max_date'] = date( $clean_format, $opts['max_date'] );
+					if ( $temp_date ) {
+						$opts['max_date'] = date( $clean_format, $temp_date );
+						$opts['max_year'] = date( 'Y', $temp_date );
 					}
 				}
 
 				// min date.
 				if ( isset( $opts['min_date'] ) && $opts['min_date'] !== '' ) {
-					$opts['min_date'] = strtotime( $opts['min_date'] );
+					$temp_date = strtotime( $opts['min_date'] );
 
-					if ( $opts['min_date'] ) {
-						$opts['min_date'] = date( $clean_format, $opts['min_date'] );
+					if ( $temp_date ) {
+						$opts['min_date'] = date( $clean_format, $temp_date );
+						$opts['min_year'] = date( 'Y', $temp_date );
 					} else {
 						$opts['min_date'] = '';
 					}

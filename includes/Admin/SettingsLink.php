@@ -21,7 +21,7 @@ class SettingsLink {
 	 */
 	public function __construct() {
 
-		$this->basename = plugin_basename( dirname( __FILE__, 3 ) );
+		$this->basename = plugin_basename( dirname( dirname( dirname( __FILE__ ) ) ) );
 		$this->register();
 	}
 
