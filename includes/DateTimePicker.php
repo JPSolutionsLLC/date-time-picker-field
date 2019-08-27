@@ -172,7 +172,7 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 			if ( isset( $opts['placeholder'] ) && 'on' === $opts['placeholder'] ) {
 				$opts['value'] = '';
 			} else {
-				$opts['value']    = $this->get_next_available_time( $opts );
+				$opts['value'] = $this->get_next_available_time( $opts );
 			}
 
 			$tzone              = get_option( 'timezone_string' );
@@ -277,11 +277,11 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 			date_default_timezone_set( $tzone );
 
 			// setup variables
-			$min_time = $opts['minTime'];
-			$max_time = $opts['maxTime'];
-			$min_date = $opts['min_date'];
-			$step     = $opts['step'];
-			$allowed  = $opts['allowed_times'];
+			$min_time = isset( $opts['minTime'] ) ? $opts['minTime'] : '';
+			$max_time = isset( $opts['maxTime'] ) ? $opts['maxTime'] : '';
+			$min_date = isset( $opts['min_date'] ) ? $opts['min_date'] : '';
+			$step     = isset( $opts['step'] ) ? $opts['step'] : '';
+			$allowed  = isset( $opts['allowed_times'] ) ? $opts['allowed_times'] : '';
 			$offset   = isset( $opts['offset'] ) ? intval( $opts['offset'] ) : 0;
 
 			$value = '';

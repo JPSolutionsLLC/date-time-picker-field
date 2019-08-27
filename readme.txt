@@ -5,7 +5,7 @@ Tags: datetimepicker, datetime, date picker, jquery
 Requires at least: 4.5
 Tested up to: 5.2.2
 Requires PHP: 5.6.2
-Stable tag: 1.7.9.2
+Stable tag: 1.7.9.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,9 @@ In the settings page for the plugin you can find a 'Advanced Settings' tab were 
 3. Advanced Settings.
 
 == Changelog ==
+= v.1.7.9.3 =
+ * undefined index error fix
+
 = v.1.7.9.2 =
  * dirname() error fix (min.req PHP7)
 
@@ -128,6 +131,9 @@ In the settings page for the plugin you can find a 'Advanced Settings' tab were 
 * Initial Release
 
 == Upgrade Notice ==
+= v.1.7.9.3 =
+ * undefined index error fix
+
 = v.1.7.9.2 =
  * dirname() error fix (min.req PHP7)
 

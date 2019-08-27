@@ -7,7 +7,7 @@
  * Author URI:      https://cmoreira.net
  * Text Domain:     date-time-picker-field
  * Domain Path:     /lang
- * Version:         1.7.9.2
+ * Version:         1.7.9.3
  * License: GPL v2 or later
  *
  * This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,9 @@
  * @package date-time-picker-field
  *
  * Version Log
+ * * v.1.7.9.3 - 31.07.2019
+ * - undefined index error fix
+ *
  * * v.1.7.9.2 - 31.07.2019
  * - dirname() error fix (min.req PHP7)
  *
