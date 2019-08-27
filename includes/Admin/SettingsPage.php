@@ -63,15 +63,6 @@ if ( ! class_exists( 'SettingsPage' ) ) {
 
 			$tzone = get_option( 'timezone_string' );
 
-			if ( $tzone !== '' ) {
-				date_default_timezone_set( $tzone );
-			} else {
-				$offset        = get_option( 'gmt_offset' );
-				$timezone_name = timezone_name_from_abbr( '', $offset * 3600, false );
-				$tzone         = $timezone_name;
-				date_default_timezone_set( $timezone_name );
-			}
-
 			// existing languages in datetime jquery script.
 			$available = $this->available_lang_codes();
 			$langs     = array_keys( $available );
@@ -310,13 +301,13 @@ if ( ! class_exists( 'SettingsPage' ) ) {
 						'desc'    => '',
 						'type'    => 'radio',
 						'options' => array(
-							'YYYY-MM-DD' => __( 'Year-Month-Day', 'date-time-picker-field' ) . ' ' . date( 'Y-m-d' ),
-							'YYYY/MM/DD' => __( 'Year/Month/Day', 'date-time-picker-field' ) . ' ' . date( 'Y/m/d' ),
-							'DD-MM-YYYY' => __( 'Day-Month-Year', 'date-time-picker-field' ) . ' ' . date( 'd-m-Y' ),
-							'DD/MM/YYYY' => __( 'Day/Month/Year', 'date-time-picker-field' ) . ' ' . date( 'd/m/Y' ),
-							'MM-DD-YYYY' => __( 'Month-Day-Year', 'date-time-picker-field' ) . ' ' . date( 'm-d-Y' ),
-							'MM/DD/YYYY' => __( 'Month/Day/Year', 'date-time-picker-field' ) . ' ' . date( 'm/d/Y' ),
-							'DD.MM.YYYY' => __( 'Day.Month.Year', 'date-time-picker-field' ) . ' ' . date( 'd.m.Y' ),
+							'YYYY-MM-DD' => __( 'Year-Month-Day', 'date-time-picker-field' ) . ' ' . current_time( 'Y-m-d' ),
+							'YYYY/MM/DD' => __( 'Year/Month/Day', 'date-time-picker-field' ) . ' ' . current_time( 'Y/m/d' ),
+							'DD-MM-YYYY' => __( 'Day-Month-Year', 'date-time-picker-field' ) . ' ' . current_time( 'd-m-Y' ),
+							'DD/MM/YYYY' => __( 'Day/Month/Year', 'date-time-picker-field' ) . ' ' . current_time( 'd/m/Y' ),
+							'MM-DD-YYYY' => __( 'Month-Day-Year', 'date-time-picker-field' ) . ' ' . current_time( 'm-d-Y' ),
+							'MM/DD/YYYY' => __( 'Month/Day/Year', 'date-time-picker-field' ) . ' ' . current_time( 'm/d/Y' ),
+							'DD.MM.YYYY' => __( 'Day.Month.Year', 'date-time-picker-field' ) . ' ' . current_time( 'd.m.Y' ),
 						),
 						'default' => 'YYYY-MM-DD',
 					),
@@ -327,8 +318,8 @@ if ( ! class_exists( 'SettingsPage' ) ) {
 						'desc'    => '',
 						'type'    => 'radio',
 						'options' => array(
-							'HH:mm'   => 'H:M ' . date( 'H:i' ),
-							'hh:mm A' => 'H:M AM/PM ' . date( 'h:i A' ),
+							'HH:mm'   => 'H:M ' . current_time( 'H:i' ),
+							'hh:mm A' => 'H:M AM/PM ' . current_time( 'h:i A' ),
 						),
 						'default' => 'hh:mm A',
 					),
