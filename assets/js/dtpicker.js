@@ -1,78 +1,77 @@
 // trigger datetimepicker on document ready and ajax complete ( when fields are loaded in lightboxes )
-jQuery(document).ready(function(){
-	dtp_init();
-}).ajaxComplete( function(){
-	dtp_init();
-});
+jQuery(document)
+	.ready(function() {
+		dtp_init();
+	})
+	.ajaxComplete(function() {
+		dtp_init();
+	});
 
 function dtp_init() {
+	var dtselector = jQuery(datepickeropts.selector);
+	if (dtselector.length === 0) {
+		return;
+	}
 
-	jQuery.datetimepicker.setDateFormatter('moment');
+	jQuery.datetimepicker.setDateFormatter("moment");
 
-	if(datepickeropts.preventkeyboard == 'on'){
+	if (datepickeropts.preventkeyboard == "on") {
 		jQuery(datepickeropts.selector).focus(function() {
-			jQuery( this ).blur();
+			jQuery(this).blur();
 		});
 	}
 
 	// convert to integer
-	datepickeropts.offset = parseInt( datepickeropts.offset );
+	datepickeropts.offset = parseInt(datepickeropts.offset);
 
 	// custom times logic
-	var logic = function( currentDateTime, $input ) {
+	var logic = function(currentDateTime, $input) {
+		var mtime = "";
+		$input.datetimepicker({ value: $input.val() });
 
-		var mtime = '';
-		$input.datetimepicker( { value: $input.val() } );
+		if (datepickeropts.minDate === "on") {
+			var now = moment(datepickeropts.now, datepickeropts.format).toDate();
 
-		if( datepickeropts.minDate === 'on' ) {
+			if (currentDateTime.toDateString() === now.toDateString()) {
+				var futureh = new Date(now.getTime() + datepickeropts.offset * 60000);
+				var mint = datepickeropts.minTime.split(":");
 
-			var now = moment( datepickeropts.now, datepickeropts.format ).toDate();
-
-			if( currentDateTime.toDateString() === now.toDateString() ){
-
-				var futureh = new Date( now.getTime() + datepickeropts.offset * 60000 );
-				var mint =  datepickeropts.minTime.split(':');
-
-				if( parseInt( futureh.getHours() ) > parseInt( mint[0] ) ) {
-					mtime = futureh.getHours() + ':' + futureh.getMinutes();
+				if (parseInt(futureh.getHours()) > parseInt(mint[0])) {
+					mtime = futureh.getHours() + ":" + futureh.getMinutes();
 					this.setOptions({
 						minTime: mtime
 					});
-
 				} else {
 					mtime = datepickeropts.minTime;
 					this.setOptions({
 						minTime: mtime
 					});
 				}
-
 			} else {
 				mtime = datepickeropts.minTime;
 				this.setOptions({
 					minTime: mtime
 				});
 			}
-
 		}
-
 	};
 
 	// if there's a predefined set of allowed times
-	if( datepickeropts.timepicker === 'on' && datepickeropts.allowed_times !== '' ){
+	if (
+		datepickeropts.timepicker === "on" &&
+		datepickeropts.allowed_times !== ""
+	) {
+		logic = function(currentDateTime, $input) {
+			var mtime = "";
 
-		logic = function( currentDateTime, $input ){
+			$input.datetimepicker({ value: $input.val() });
 
-			var mtime = '';
+			if (datepickeropts.minDate === "on") {
+				var now = moment(datepickeropts.now, datepickeropts.format).toDate();
 
-			$input.datetimepicker( { value: $input.val() } );
-
-			if( datepickeropts.minDate === 'on' ) {
-
-				var now = moment( datepickeropts.now, datepickeropts.format ).toDate();
-
-				if( currentDateTime.toDateString() === now.toDateString() ){
-					var futureh = new Date( now.getTime() + datepickeropts.offset * 60000 );
-					mtime = futureh.getHours() + ':' + futureh.getMinutes();
+				if (currentDateTime.toDateString() === now.toDateString()) {
+					var futureh = new Date(now.getTime() + datepickeropts.offset * 60000);
+					mtime = futureh.getHours() + ":" + futureh.getMinutes();
 					this.setOptions({
 						minTime: mtime
 					});
@@ -84,38 +83,56 @@ function dtp_init() {
 				}
 			}
 
-			var atimes = '';
-			if( currentDateTime.getDay()==0 && datepickeropts.sunday_times !== '' ){
+			var atimes = "";
+			if (currentDateTime.getDay() == 0 && datepickeropts.sunday_times !== "") {
 				atimes = datepickeropts.sunday_times;
 				this.setOptions({
 					allowTimes: atimes
 				});
-			} else if( currentDateTime.getDay()==1 && datepickeropts.monday_times !== '' ){
+			} else if (
+				currentDateTime.getDay() == 1 &&
+				datepickeropts.monday_times !== ""
+			) {
 				atimes = datepickeropts.monday_times;
 				this.setOptions({
 					allowTimes: atimes
 				});
-			} else if( currentDateTime.getDay()==2 && datepickeropts.tuesday_times !== '' ){
+			} else if (
+				currentDateTime.getDay() == 2 &&
+				datepickeropts.tuesday_times !== ""
+			) {
 				atimes = datepickeropts.tuesday_times;
 				this.setOptions({
 					allowTimes: atimes
 				});
-			} else if( currentDateTime.getDay()==3 && datepickeropts.wednesday_times !== '' ){
+			} else if (
+				currentDateTime.getDay() == 3 &&
+				datepickeropts.wednesday_times !== ""
+			) {
 				atimes = datepickeropts.wednesday_times;
 				this.setOptions({
 					allowTimes: atimes
 				});
-			} else if( currentDateTime.getDay()==4 && datepickeropts.thursday_times !== '' ){
+			} else if (
+				currentDateTime.getDay() == 4 &&
+				datepickeropts.thursday_times !== ""
+			) {
 				atimes = datepickeropts.thursday_times;
 				this.setOptions({
 					allowTimes: atimes
 				});
-			} else if( currentDateTime.getDay()==5 && datepickeropts.friday_times !== '' ){
+			} else if (
+				currentDateTime.getDay() == 5 &&
+				datepickeropts.friday_times !== ""
+			) {
 				atimes = datepickeropts.friday_times;
 				this.setOptions({
 					allowTimes: atimes
 				});
-			} else if( currentDateTime.getDay()==6 && datepickeropts.saturday_times !== '' ){
+			} else if (
+				currentDateTime.getDay() == 6 &&
+				datepickeropts.saturday_times !== ""
+			) {
 				atimes = datepickeropts.saturday_times;
 				this.setOptions({
 					allowTimes: atimes
@@ -127,25 +144,25 @@ function dtp_init() {
 				});
 			}
 
-			var minDateTime = new Date( currentDateTime.getTime() );
-			var maxDateTime = new Date( currentDateTime.getTime() );
+			var minDateTime = new Date(currentDateTime.getTime());
+			var maxDateTime = new Date(currentDateTime.getTime());
 
 			// minimum time
-			var timeex = atimes[0].split(':');
-			minDateTime.setHours( parseInt( timeex[0] ), parseInt( timeex[1] ) );
+			var timeex = atimes[0].split(":");
+			minDateTime.setHours(parseInt(timeex[0]), parseInt(timeex[1]));
 
-			if( currentDateTime < minDateTime ) {
-				formattedDate = moment( minDateTime ).format( datepickeropts.format );
-				$input.datetimepicker( { value: formattedDate } );
+			if (currentDateTime < minDateTime) {
+				formattedDate = moment(minDateTime).format(datepickeropts.format);
+				$input.datetimepicker({ value: formattedDate });
 			}
 
 			// maximum time
-			timeex = atimes[ atimes.length - 1 ].split(':');
-			maxDateTime.setHours( parseInt( timeex[0] ), parseInt( timeex[1] ) );
+			timeex = atimes[atimes.length - 1].split(":");
+			maxDateTime.setHours(parseInt(timeex[0]), parseInt(timeex[1]));
 
-			if( currentDateTime > maxDateTime ) {
-				formattedDate = moment( maxDateTime ).format( datepickeropts.format );
-				$input.datetimepicker( { value: formattedDate } );
+			if (currentDateTime > maxDateTime) {
+				formattedDate = moment(maxDateTime).format(datepickeropts.format);
+				$input.datetimepicker({ value: formattedDate });
 			}
 		};
 	}
@@ -153,64 +170,64 @@ function dtp_init() {
 	var opts = {
 		i18n: datepickeropts.i18n,
 		value: datepickeropts.value,
-		format:datepickeropts.format,
+		format: datepickeropts.format,
 		formatDate: datepickeropts.dateformat,
 		formatTime: datepickeropts.hourformat,
 		theme: datepickeropts.theme,
-		timepicker: (datepickeropts.timepicker == 'on'),
-		datepicker: (datepickeropts.datepicker == 'on'),
+		timepicker: datepickeropts.timepicker == "on",
+		datepicker: datepickeropts.datepicker == "on",
 		step: parseInt(datepickeropts.step),
 		timepickerScrollbar: true,
 		dayOfWeekStart: parseInt(datepickeropts.dayOfWeekStart),
-		onChangeDateTime:logic,
-		onShow:logic,
-		validateOnBlur:false //added on 1.7.4 to prevent AM/PM format from jumping to 1h before.
+		onChangeDateTime: logic,
+		onShow: logic,
+		validateOnBlur: false //added on 1.7.4 to prevent AM/PM format from jumping to 1h before.
 	};
 
-	if( datepickeropts.minTime !== '' ){
+	if (datepickeropts.minTime !== "") {
 		opts.minTime = datepickeropts.minTime;
 	}
 
-	if( datepickeropts.maxTime !== '' ){
+	if (datepickeropts.maxTime !== "") {
 		opts.maxTime = datepickeropts.maxTime;
 	}
 
-	if( datepickeropts.minDate === 'on' ){
-		if ( datepickeropts.value !== '' ) {
+	if (datepickeropts.minDate === "on") {
+		if (datepickeropts.value !== "") {
 			opts.minDate = datepickeropts.value;
 		} else {
 			opts.minDate = 0;
 		}
 	}
 
-	if( datepickeropts.max_date !== '' ){
+	if (datepickeropts.max_date !== "") {
 		opts.maxDate = datepickeropts.max_date;
 
 		// set max year
-		opts.yearEnd = parseInt( datepickeropts.max_year );
+		opts.yearEnd = parseInt(datepickeropts.max_year);
 	}
 
-	if( datepickeropts.min_date !== '' ){
+	if (datepickeropts.min_date !== "") {
 		opts.minDate = datepickeropts.min_date;
 
 		// set min year
-		opts.yearStart = parseInt( datepickeropts.min_year );
+		opts.yearStart = parseInt(datepickeropts.min_year);
 	}
 
-	if( datepickeropts.disabled_days !== ''){
+	if (datepickeropts.disabled_days !== "") {
 		opts.disabledWeekDays = datepickeropts.disabled_days;
 	}
 
-	if( datepickeropts.disabled_calendar_days !== ''){
+	if (datepickeropts.disabled_calendar_days !== "") {
 		opts.disabledDates = datepickeropts.disabled_calendar_days;
 	}
 
-	if( datepickeropts.allowed_times !== ''){
+	if (datepickeropts.allowed_times !== "") {
 		opts.allowTimes = datepickeropts.allowed_times;
 	}
 
-
-	jQuery(datepickeropts.selector).attr( 'type','text' ).datetimepicker( opts );
+	jQuery(datepickeropts.selector)
+		.datetimepicker(opts)
+		.attr("type", "text");
 	jQuery.datetimepicker.setLocale(datepickeropts.locale);
-
 }
