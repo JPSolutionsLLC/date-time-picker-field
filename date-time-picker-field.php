@@ -23,6 +23,9 @@
  * @package date-time-picker-field
  *
  * Version Log
+ * * v.1.7.9.4 - 03.09.2019
+ * - Display inline option added
+ *
  * * v.1.7.9.3 - 31.07.2019
  * - undefined index error fix
  *

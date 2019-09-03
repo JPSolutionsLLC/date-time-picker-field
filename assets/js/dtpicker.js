@@ -173,6 +173,7 @@ function dtp_init() {
 		format: datepickeropts.format,
 		formatDate: datepickeropts.dateformat,
 		formatTime: datepickeropts.hourformat,
+		inline: datepickeropts.inline == "on",
 		theme: datepickeropts.theme,
 		timepicker: datepickeropts.timepicker == "on",
 		datepicker: datepickeropts.datepicker == "on",

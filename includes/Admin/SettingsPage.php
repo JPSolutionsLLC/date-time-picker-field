@@ -211,6 +211,15 @@ if ( ! class_exists( 'SettingsPage' ) ) {
 					),
 
 					array(
+						'name'    => 'inline',
+						'label'   => __( 'Display Inline', 'date-time-picker-field' ),
+						'desc'    => __( 'Display calendar and/or time picker inline.', 'date-time-picker-field' ),
+						'type'    => 'checkbox',
+						'value'   => '1',
+						'default' => 'off',
+					),
+
+					array(
 						'name'    => 'placeholder',
 						'label'   => __( 'Keep Placeholder', 'date-time-picker-field' ),
 						'desc'    => __( 'If enabled, original placeholder will be kept. If disabled it will be replaced with current date or next available time depending on your settings.', 'date-time-picker-field' ),
