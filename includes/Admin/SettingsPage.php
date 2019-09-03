@@ -354,7 +354,7 @@ if ( ! class_exists( 'SettingsPage' ) ) {
 		public function plugin_page() {
 			echo '<div class="wrap">';
 
-			echo '<h2>' . __( 'Date & Time Picker Settings', 'dtp' ) . '</h2>';
+			echo '<h2>' . __( 'Date & Time Picker Settings', 'date-time-picker-field' ) . '</h2>';
 
 			$this->settings_api->show_navigation();
 			$this->settings_api->show_forms();
