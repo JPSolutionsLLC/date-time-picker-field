@@ -167,6 +167,10 @@ function dtp_init() {
 		};
 	}
 
+	var jumpToNext = function() {
+		//logic to jump to next input here
+	};
+
 	var opts = {
 		i18n: datepickeropts.i18n,
 		value: datepickeropts.value,
@@ -182,6 +186,8 @@ function dtp_init() {
 		dayOfWeekStart: parseInt(datepickeropts.dayOfWeekStart),
 		onChangeDateTime: logic,
 		onShow: logic,
+		onSelectDate: jumpToNext,
+		onSelectTime: jumpToNext,
 		validateOnBlur: false //added on 1.7.4 to prevent AM/PM format from jumping to 1h before.
 	};
 
