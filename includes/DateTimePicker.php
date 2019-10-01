@@ -7,6 +7,7 @@
 namespace CMoreira\Plugins\DateTimePicker;
 
 use \Datetime;
+use \DateTimeZone;
 
 if ( ! class_exists( 'DateTimePicker' ) ) {
 	class DateTimePicker {
@@ -40,7 +41,6 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 		public function scripts() {
 
 			$tzone = $this->get_timezone_name();
-			date_default_timezone_set( $tzone );
 
 			$version = $this->get_version();
 
@@ -177,9 +177,10 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 
 			$tzone              = get_option( 'timezone_string' );
 			$opts['timezone']   = $tzone;
-			$toffset            = get_option( 'gmt_offset' );
-			$opts['utc_offset'] = $toffset;
-			$now                = new DateTime();
+			$tzoffset           = get_option( 'gmt_offset' );
+			$opts['utc_offset'] = $tzoffset;
+			$tzoffset           = strpos('-', $tzoffset) ? '-' . $tzoffset : '+' . $tzoffset;
+			$now                = new DateTime( 'now', new DateTimeZone($tzoffset) );
 			$opts['now']        = $now->format( $opts['clean_format'] );
 
 			wp_localize_script( 'dtpicker-build', 'datepickeropts', $opts );
@@ -272,9 +273,8 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 		 */
 		public function get_next_available_time( $opts ) {
 
-			// set timezone
-			$tzone = $this->get_timezone_name();
-			date_default_timezone_set( $tzone );
+			$tzoffset = get_option( 'gmt_offset' );
+			$tzoffset = strpos('-', $tzoffset) ? '-' . $tzoffset : '+' . $tzoffset;
 
 			// setup variables
 			$min_time = isset( $opts['minTime'] ) ? $opts['minTime'] : '';
@@ -285,8 +285,8 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 			$offset   = isset( $opts['offset'] ) ? intval( $opts['offset'] ) : 0;
 
 			$value = '';
-			$now   = new DateTime();
-			$next  = new DateTime();
+			$now   = new DateTime( 'now', new DateTimeZone($tzoffset) );
+			$next  = new DateTime( 'now', new DateTimeZone($tzoffset) );
 
 			if ( '' !== $min_date ) {
 
@@ -424,10 +424,6 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 		 * @return array of times
 		 */
 		public function hours_range( $min = '00:00', $max = '23:59', $step = '60', $format = 'H:i' ) {
-
-			// timezone.
-			$tzone = $this->get_timezone_name();
-			date_default_timezone_set( $tzone );
 
 			$times    = array();
 			$step     = intval( $step ) <= 60 ? intval( $step ) : 60;
