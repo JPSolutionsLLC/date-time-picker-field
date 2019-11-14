@@ -249,6 +249,7 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 				'mm',
 				'A',
 				'YYYY',
+				'MMM',
 				'MM',
 				'DD',
 			);
@@ -258,6 +259,7 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 				'i',
 				'A',
 				'Y',
+				'M',
 				'm',
 				'd',
 			);
