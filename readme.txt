@@ -43,6 +43,10 @@ In the settings page for the plugin you can find a 'Advanced Settings' tab were 
 3. Advanced Settings.
 
 == Changelog ==
+= v.1.7.9.5 =
+ * New date formats added
+ * UTC issue fixed
+
 = v.1.7.9.4 =
  * display inline option
 
@@ -134,6 +138,10 @@ In the settings page for the plugin you can find a 'Advanced Settings' tab were 
 * Initial Release
 
 == Upgrade Notice ==
+= v.1.7.9.5 =
+ * New date formats added
+ * UTC issue fixed
+
 = v.1.7.9.4 =
  * display inline option
 
