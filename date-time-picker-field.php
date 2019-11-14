@@ -7,7 +7,7 @@
  * Author URI:      https://cmoreira.net
  * Text Domain:     date-time-picker-field
  * Domain Path:     /lang
- * Version:         1.7.9.4
+ * Version:         1.7.9.5
  * License: GPL v2 or later
  *
  * This program is free software; you can redistribute it and/or modify
@@ -23,6 +23,10 @@
  * @package date-time-picker-field
  *
  * Version Log
+ * * v.1.7.9.5 - 14.11.2019
+ * - New date formats added
+ * - UTC issue fixed
+ *
  * * v.1.7.9.4 - 03.09.2019
  * - Display inline option added
  *

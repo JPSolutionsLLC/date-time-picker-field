@@ -172,6 +172,7 @@ function dtp_init() {
 	};
 
 	var opts = {
+		scrollMonth: true,
 		i18n: datepickeropts.i18n,
 		value: datepickeropts.value,
 		format: datepickeropts.format,
