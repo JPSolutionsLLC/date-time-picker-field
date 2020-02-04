@@ -1,9 +1,9 @@
 // trigger datetimepicker on document ready and ajax complete ( when fields are loaded in lightboxes )
 jQuery(document)
-	.ready(function() {
+	.ready(function () {
 		dtp_init();
 	})
-	.ajaxComplete(function() {
+	.ajaxComplete(function () {
 		dtp_init();
 	});
 
@@ -16,7 +16,7 @@ function dtp_init() {
 	jQuery.datetimepicker.setDateFormatter("moment");
 
 	if (datepickeropts.preventkeyboard == "on") {
-		jQuery(datepickeropts.selector).focus(function() {
+		jQuery(datepickeropts.selector).focus(function () {
 			jQuery(this).blur();
 		});
 	}
@@ -25,7 +25,7 @@ function dtp_init() {
 	datepickeropts.offset = parseInt(datepickeropts.offset);
 
 	// custom times logic
-	var logic = function(currentDateTime, $input) {
+	var logic = function (currentDateTime, $input) {
 		var mtime = "";
 		$input.datetimepicker({ value: $input.val() });
 
@@ -61,7 +61,7 @@ function dtp_init() {
 		datepickeropts.timepicker === "on" &&
 		datepickeropts.allowed_times !== ""
 	) {
-		logic = function(currentDateTime, $input) {
+		logic = function (currentDateTime, $input) {
 			var mtime = "";
 
 			$input.datetimepicker({ value: $input.val() });
@@ -167,12 +167,12 @@ function dtp_init() {
 		};
 	}
 
-	var jumpToNext = function() {
+	var jumpToNext = function () {
 		//logic to jump to next input here
 	};
 
 	var opts = {
-		scrollMonth: true,
+		scrollMonth: false,
 		i18n: datepickeropts.i18n,
 		value: datepickeropts.value,
 		format: datepickeropts.format,
