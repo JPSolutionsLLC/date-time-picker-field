@@ -23,6 +23,9 @@
  * @package date-time-picker-field
  *
  * Version Log
+ * * v.1.8 - 10 Feb 2020
+ * - Offset and min_date improvements
+
  * * v.1.7.8 - 4 Feb 2020
  * - New date formats added
  * - UTC issue fixed

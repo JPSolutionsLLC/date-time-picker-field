@@ -297,10 +297,12 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 
 				$min = strtotime( $min_date );
 				$now->setTimestamp( $min );
+				$next->setTimestamp( $min );
 			}
 
 			// add offset minutes.
 			$now->modify( '+' . $offset . 'minutes' );
+			$next->modify( '+' . $offset . 'minutes' );
 
 			// use allowed dates
 			if ( is_array( $opts['allowed_times'] ) && count( $opts['allowed_times'] ) > 0 ) {
