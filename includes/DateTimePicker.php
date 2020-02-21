@@ -285,6 +285,7 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 			$step     = isset( $opts['step'] ) ? $opts['step'] : '';
 			$allowed  = isset( $opts['allowed_times'] ) ? $opts['allowed_times'] : '';
 			$offset   = isset( $opts['offset'] ) ? intval( $opts['offset'] ) : 0;
+			$disabled = isset( $opts['disabled_calendar_days'] ) ? $opts['disabled_calendar_days'] : '';
 
 			$value = '';
 			$now   = new DateTime( 'now', new DateTimeZone($tzoffset) );
@@ -303,6 +304,23 @@ if ( ! class_exists( 'DateTimePicker' ) ) {
 			// add offset minutes.
 			$now->modify( '+' . $offset . 'minutes' );
 			$next->modify( '+' . $offset . 'minutes' );
+
+			// if it's included in the excluded dates.
+			if( is_array( $disabled ) ) {
+
+				// map to trim function
+				$disabled = array_map('trim', $disabled );
+				$proceed = false;
+
+				while ( ! $proceed ) {
+					$next_string = $next->format( $this->format( $opts['dateformat'] ) );
+					if ( ! in_array( $next_string, $disabled ) ) {
+						$proceed = true;
+					} else {
+						$next->modify( '+1 day' );
+					}
+				}
+			}
 
 			// use allowed dates
 			if ( is_array( $opts['allowed_times'] ) && count( $opts['allowed_times'] ) > 0 ) {
