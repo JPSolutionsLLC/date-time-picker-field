@@ -364,6 +364,8 @@ if ( ! class_exists( 'SettingsPage' ) ) {
 
 			echo '<h2>' . __( 'Date & Time Picker Settings', 'date-time-picker-field' ) . '</h2>';
 
+			echo '<div>' . __( 'If you need more than one set of rules or to create date ranges, check out the <a href="https://cmoreira.net/date-time-picker-wordpress-plugin/" target="_blank">Pro version</a>.', 'date-time-picker-field' ) . '<span class="dashicons dashicons-external"></span></div>';
+
 			$this->settings_api->show_navigation();
 			$this->settings_api->show_forms();
 

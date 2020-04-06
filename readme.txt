@@ -2,10 +2,10 @@
 Contributors: carlosmoreirapt
 Donate link: https://cmoreira.net/date-and-time-picker-for-wordpress/
 Tags: datetimepicker, datetime, date picker, jquery
-Requires at least: 4.5
-Tested up to: 5.2.2
+Requires at least: 5.0
+Tested up to: 5.4
 Requires PHP: 5.6.2
-Stable tag: 1.7.9.4
+Stable tag: 1.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,10 +14,13 @@ This plugin will allow you to create date and time picker fields using CSS selec
 == Description ==
 Convert any input field on your website into a date time picker field using CSS selectors. You can display a calendar with just a date picker funcionality or enable a time picker also.
 
-* Created by [Carlos Moreira](https://cmoreira.net) using a jQuery plugin by [xdsoft.net](https://xdsoft.net/jqplugins/datetimepicker/)
-* More Information and Tutorials at <https://cmoreira.net/date-and-time-picker-for-wordpress/>
+More Information and Tutorials at <https://cmoreira.net/date-and-time-picker-for-wordpress/>
 
 Compatible with [Contact Form 7](https://cmoreira.net/blog/date-and-time-picker-field-on-contact-form-7/), [Divi Forms](https://cmoreira.net/blog/date-picker-in-divi-contact-form/) and others.
+
+= Pro Version =
+
+If you need to create more than one set of rules for different fields, or date ranges, try out the [PRO version](https://cmoreira.net/date-time-picker-wordpress-plugin/).
 
 == Frequently Asked Questions ==
 
@@ -43,9 +46,10 @@ In the settings page for the plugin you can find a 'Advanced Settings' tab were 
 3. Advanced Settings.
 
 == Changelog ==
-= v.1.7.9.5 =
+= v.1.8 =
  * New date formats added
  * UTC issue fixed
+ * Offset and min_date improvements
 
 = v.1.7.9.4 =
  * display inline option
@@ -232,5 +236,3 @@ In the settings page for the plugin you can find a 'Advanced Settings' tab were 
 * [xdsoft.net datetimepicker jQuery plugin](https://xdsoft.net/jqplugins/datetimepicker/)
 * [Moment JavaScript date library](https://momentjs.com/)
 * [Icon by Paomedia](https://github.com/paomedia/small-n-flat)
-
-
